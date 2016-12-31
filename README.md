@@ -1,6 +1,48 @@
 # viscript
 
-=== Spec ===
+
+Dependencies
+------------
+
+Dependencies are managed with [gvt](https://github.com/FiloSottile/gvt).
+
+To install gvt:
+```
+$ go get -u github.com/FiloSottile/gvt
+```
+
+gvt vendors all dependencies into the repo.
+
+If you change the dependencies, you should update them as needed with `gvt fetch`, `gvt update`, `gvt delete`, etc.
+
+Refer to the [gvt documentation](https://github.com/FiloSottile/gvt) or `gvt help` for further instructions.
+
+
+
+
+
+
+
+Debian
+=======
+
+sudo apt-get install libgl1-mesa-dev
+sudo apt-get install libxrandr-dev
+sudo apt-get install libxcursor-dev
+sudo apt-get install libxinerama-dev
+
+go get github.com/go-gl/gl/v{3.2,3.3,4.1,4.4,4.5}-{core,compatibility}/gl
+go get github.com/go-gl/gl/v3.3-core/gl
+
+
+
+
+
+
+
+
+Spec 
+====
 
 Macros + Reflection
 Statically typed scheme
@@ -252,6 +294,7 @@ Each of these is written as S notation
 (def_func Name (in...) (out...) (expression_array...) )
 
 
+<<<<<<< HEAD
 
 
 
@@ -654,7 +697,59 @@ https://media.8ch.net/file_store/182f81c50b3263c84c2269056bde7221026adc7971d119b
 [12:31:22 PM] HaltingState: also, label line numbers in the editor; each line needs to have line numbers on left hand side, like sublime
 
 
+(def_func Name (in...) (out...) (expression_array...) )
 
+
+=======
+>>>>>>> corpusc/master
+System Level Enumeration
+========================
+
+System Level Enumerations
+- give me a list of nodes I controll
+- give me list of programs running on a node
+- give me a list of channels (communication channels) between nodes
+
+- deploy a process on a node
+- shutdown process on node
+
+- get CPU/ ram usage, etc
+
+Language Level Enumeration
+==========================
+
+In a given line of source code
+- enumerate the variables (types, name) in the current scope
+- enumerate the variables (types, name) passed into the current function
+- enumerate the variables, modules, functions that can be called from the current line/scope
+- enumerate the variables in the local scope
+- enumerate the variables passed into a function
+- enumerate the variables at global, current module level
+- enumerate the current modules that are imported in the current module
+
+- enumerate the defined functions in the current module
+- enumerate the defined global variables in the current module
+
+(var x uint32) adds a new variable to the local scope
+
+A function that enumerates the list of atomic/base types
+A function that enumerates the list of defined types
+
+Types
+- A function that enumerates the list of atomic/base types
+- A function that enumerates the list of defined types
+- enumerate the fields of a type (struct)
+- enumerate the functions OF a type (functions that do not modify its state, function of an instance)
+- enumerate the functtions ON a type (functoins that change its state, functions ON a type instance)
+- enumerate state (name, type) pairs for struct type and the functions on the tpe
+
+- enumerate the dependencies on an object
+-- example: What external functions, objects, modules are used by a particular function
+-- what external functions, objects, modules are used by a line in a particular function
+
+
+
+<<<<<<< HEAD
 [9/27/2016 7:05:12 AM] HaltingState: 
 1> All code must be in a function
 2> you call function
@@ -662,11 +757,6 @@ https://media.8ch.net/file_store/182f81c50b3263c84c2269056bde7221026adc7971d119b
 3> functions have line 1, line 2, line 3, line 4 etc.
 4> Functions have "blocks" which are like "if X, block Y else Block Y" the blocks are embedded recursively. So there is a top block, then subblocks. 
 5> each line is an expression. start with basic things like "introduce variable X" and "set x value" and (set x (add32 5 8))   , (new x int32), or (int32.new x) //introduce type int32, with label x
-
-
-
-
-
 
 [9/30/2016 3:00:31 AM] HaltingState: yes
 [9/30/2016 3:01:00 AM] HaltingState: so (* 3 (+ 5 6)) instead of 3* (5+6) so you do not have to do any work to parse and no order of precidence
@@ -704,9 +794,8 @@ being able to create structs etc and just start simple
 But doesnt matter for now
 [7:19:28 AM] HaltingState: A virtual DOM, then an object that renders it into the square buffer
 
-
-
-
+>>>>>>> c28e4e893e8b22f4008399ed63e86c220a13cf47
+=======
 
 [10/11/2016 5:10:54 AM] HaltingState: go on rise up and create an etherpad
 [10/11/2016 5:11:50 AM] HaltingState: https://pad.riseup.net/
@@ -715,19 +804,19 @@ But doesnt matter for now
 [10/11/2016 6:40:40 AM] HaltingState: basicly, you are implementing 
 1> a very simply "base language"
 2> the more complicated things will be in the base language itself, written in terms of itself, instead of golang
+=======
 
-you need to have an atom, an operation, a piece of data. Then a rule for when it can be used (A context is fed in) and there will be a slot (ex for a data item in an operand) and there will be a rule for what can occupy that.
 
-So if you add (int32.add X 3), then X int32.add may say "X has to be an int32 or an unknown and then valid X would be a list of (literal, or int32 in local scope, or module.var which is an int 32 etc) and we can enumerate exhaustively, everything valid that can go in that slot. People could select it from a dropdown
 
-The environment is current line, current function, current module; then we can look at vars in the local scope and can look at vars at the module scope and can look at vars passed into the function and see if any of them matched
-[10/11/2016 6:43:01 AM] HaltingState: There is an idea of "enumeration" (ability to list all possibilties and it must be finite) (Similar idea to counting).
 
-We build up programs by applying operations to them.
 
-So we do
-1> add new line operator
-2> Add operator (int32.add X Y)
-3> substitute or set X, or select X and see options for thigns that could go in there (a function that returns int32, an int32 literal, a function that casts something else to int, an int32 at local scope etc)
 
-"
+
+
+>>>>>>> corpusc/master
+
+
+
+
+
+
